@@ -32,5 +32,4 @@ public class MyPageController {
         return responseService.getSingleResult(user.getNickName());
     }
 
-
 }

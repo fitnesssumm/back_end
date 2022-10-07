@@ -48,7 +48,6 @@ public class BoardDto {
         private String content;
         private String title;
 
-
         private String storedFilePath;
     }
 

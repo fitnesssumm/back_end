@@ -11,7 +11,10 @@ import java.util.Optional;
 public interface BoardRepository extends JpaRepository<Board, Long> {
 
     public Optional<Board> findByBoardId(Long boardId);
+
 //    public Optional<List<Board>> findAll();
+
+    public Optional<List<Board>> findByUser(User user, Pageable pageable);
 
     public Optional<Boolean> deleteByBoardId(Long boardId);
 }

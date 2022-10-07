@@ -4,15 +4,17 @@ package com.example.fitsum.service;
 import com.example.fitsum.Dto.BoardDto;
 import com.example.fitsum.Dto.BoardDtoConverter;
 import com.example.fitsum.domain.Board;
+import com.example.fitsum.domain.User;
+import com.example.fitsum.exception.exceptions.CUserNotFoundException;
 import com.example.fitsum.repository.BoardRepository;
 import com.example.fitsum.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,6 @@ import java.util.List;
 @Service
 public class BoardListService {
     private final BoardRepository boardRepository;
-
     @Transactional
     public List<BoardDto.BoardViewDto> getBoardList() {
 //        if(user.getMyBoardList().size() == 0)
@@ -66,6 +67,5 @@ public class BoardListService {
 //
 //        return boardViewDtoList;
 //    }
-
 
 }
