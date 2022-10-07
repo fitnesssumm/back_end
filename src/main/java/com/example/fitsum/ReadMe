@@ -1,0 +1,21 @@
+git init
+git remote add origin git@github.com:fitnesssumm/back_end.git
+
+git add .
+git commit –m “ 어쩌구 commit”
+git push origin HEAD:main
+
+git pull origin main
+
+@@ git push origin HEAD:main --force   //강제 푸쉬
+@@ git stash                            // 풀하기전에 커밋하라고 할때 무시하게 함
+--allow-unrelated-histories
+http://localhost:8000/api/signup         //확인창
+------------------------------------------------
+gmail
+fitssum11@gmail.com
+qwer1234!!
+--------------------------
+성별,키,몸무게 db 값 연결
+ddd
+해결....
