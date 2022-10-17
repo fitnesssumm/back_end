@@ -9,8 +9,7 @@ public class BadgeDtoConverter {
         return BadgeDto.BadgeViewDto.builder()
                 .badgeId(badge.getBadgeId())
                 .badgetitle(badge.getBadgetitle())
-                .userId(badge.getUser().getUserId())
-                .success(badge.getSuccess())
+                .opens(badge.getOpens())
                 .isMe(isMe)
                 .build();
     }

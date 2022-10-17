@@ -1,16 +1,18 @@
 package com.example.fitsum.domain;
 
 import com.example.fitsum.exception.exceptions.CAuthenticationException;
-import com.example.fitsum.exception.exceptions.CNotAuthorizedUserException;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Slf4j
 @Entity
@@ -19,6 +21,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@DynamicInsert
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Badge {
 
@@ -28,20 +31,18 @@ public class Badge {
     @Schema(example = "유저의 primary key")
     private Long badgeId;
 
-    @Schema(example = "제목")
+
+    @Schema(example = "뱃지제목")
     private String badgetitle;
 
-    @Schema(example = "회득 여부")
-    private int success;
 
+    @Schema(example = "회득 여부")
+    @ColumnDefault("false")
+    private Boolean opens;
 
     @ManyToOne
-    @JoinColumn(name = "user_no")
-    @Schema(example = "연결된 유저")
-    @JsonBackReference
+    @JoinColumn(name="userNo")
     private User user;
-
-
 
     public boolean checkUser(boolean isMe){
         String userId;
@@ -59,4 +60,8 @@ public class Badge {
         }
         return isMe;
     }
+
+
+
+
 }

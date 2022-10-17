@@ -28,7 +28,7 @@ public class BadgeDto {
         private String badgetitle;
         private String userId;
         private User user;
-        private int success;
+        private Boolean opens;
         private Boolean isMe;
 
     }
@@ -38,7 +38,8 @@ public class BadgeDto {
     @Builder
     public static class CollectBadgeDto{
         private String badgetitle;
-        private int Success;
+        private User user;
+        private Boolean opens;
 
     }
 

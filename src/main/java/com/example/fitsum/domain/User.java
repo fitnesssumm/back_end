@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class User implements UserDetails {
-        //유저가 사용할 아이디
+    //유저가 사용할 아이디
     @Id
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,6 +58,10 @@ public class User implements UserDetails {
     @Schema(example = "유저 성별")
     private int userSex;
 
+    @Schema(example = "유저 코인")
+    private int userCoin;
+
+
 
     //userAuth??
     //@NotNull
@@ -80,10 +84,14 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<UserBoard> storedDiaryList;
 
-    //회득 뱃지 리스트
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Badge> myBadgeList;
+    @OneToMany
+    @JoinTable(name = "UserBadge",
+            joinColumns = @JoinColumn(name = "userNo"),
+            inverseJoinColumns = @JoinColumn(name = "badgeId"))
+    private  List<Badge> badge = new ArrayList<Badge>();
+
+
+
 
 
     public void updatePassword(String userPw){
@@ -109,6 +117,8 @@ public class User implements UserDetails {
     public void emailVerifiedSuccess() {
         this.emailAuth = true;
     }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -150,5 +160,7 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 
 }

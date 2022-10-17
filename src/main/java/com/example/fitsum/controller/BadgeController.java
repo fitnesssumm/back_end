@@ -1,18 +1,20 @@
 package com.example.fitsum.controller;
 
 import com.example.fitsum.Dto.BadgeDto;
+import com.example.fitsum.domain.Badge;
 import com.example.fitsum.exception.exceptions.CAuthenticationException;
-import com.example.fitsum.exception.exceptions.CWrongDiaryIdException;
+import com.example.fitsum.exception.exceptions.CWrongBoardIdException;
 import com.example.fitsum.model_response.CommonResult;
 import com.example.fitsum.model_response.SingleResult;
 import com.example.fitsum.service.BadgeService;
 import com.example.fitsum.service.ResponseService;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
 
 @Tag(name = "badge post", description = "뱃지 리스트 API")
 @Slf4j
@@ -22,12 +24,11 @@ import org.springframework.web.bind.annotation.*;
 public class BadgeController {
 
     final private BadgeService badgeService;
-
     final private ResponseService responseService;
 
-    @GetMapping("/badge/badge-id")
+    @GetMapping("/profile/{badge}")
     @Operation(summary = "나의 뱃지 리스트", description = "가지고 있는 뱃지 정보를 가져옴.")
-    public SingleResult showBadge(@PathVariable("badge-id") String badgeIds) {
+    public SingleResult showBadge(@PathVariable("badge") String badgeIds) {
         Long badgeId;
         BadgeDto.BadgeViewDto badgeDto;
 
@@ -35,30 +36,34 @@ public class BadgeController {
 
         try {
             badgeId = Long.parseLong(badgeIds);
-            //일기장을 showdto로 보여지는 용도로만 사용
-            badgeDto = badgeService.getBadgeByBadgeId(badgeId);
-        } catch (CWrongDiaryIdException e) {
-            throw new CWrongDiaryIdException();
+
+            badgeDto = badgeService.getBadgeBybadgeId(badgeId);
+        } catch (CWrongBoardIdException e) {
+            throw new CWrongBoardIdException();
         }
         return responseService.getSingleResult(badgeDto);
+
     }
 
-    @PostMapping("/badge")
-    @Operation(summary = "뱃지 등록", description = "제목(title)과 성공여부(Success를 이용하여 뱃지를 신규 등록합니다.")
-    public CommonResult createBadge(@RequestBody BadgeDto.CollectBadgeDto collectBadgeDto) {
-        //권한을 통해 유저 id를 획득합니다.
-        String userId;
+    @ApiOperation(value = "뱃지 등록", notes = "뱃지를 등록한다.")
+    @PostMapping(value ="/profile/badgeregister")
+    public CommonResult badgeregister(@RequestBody BadgeDto.CollectBadgeDto collectBadgeDto){
+        log.info("badgetitle : {} " , collectBadgeDto.getBadgetitle());
+        log.info("opens : {}" , collectBadgeDto.getOpens());
+        log.info("user : {}" , collectBadgeDto.getUser());
 
-        try {
-            //권한을 통해 유저 id를 획득합니다.
-            userId = SecurityContextHolder.getContext().getAuthentication().getName();
-        } catch (NullPointerException e) {
-            log.info("Not legal authentication.");
-            throw new CAuthenticationException();
-        }
-
-        badgeService.collectBadge(userId, collectBadgeDto);
+        badgeService.successBadge(collectBadgeDto);
 
         return responseService.getSuccessResult();
     }
+
+    @ApiOperation(value = "badge중복확인")
+    @GetMapping("/profile/checkbadge")
+    public CommonResult checkBadge(@PathVariable("checkbadge") String badgetitle){
+        log.info("checkBadge : {}",badgetitle);
+        badgeService.checkBadge(badgetitle);
+        return responseService.getSuccessResult();
+    }
+
+
 }
