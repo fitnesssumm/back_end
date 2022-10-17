@@ -30,11 +30,11 @@ public class Record {
 
     @Column(unique = true)
     @Schema(example = "상체운동 기록")
-    private int pushuprecord;
+    private Long pushuprecord;
 
     @Column(unique = true)
     @Schema(example = "하체운동 기록")
-    private int squartrecord;
+    private Long squartrecord;
 
     @ManyToOne
     @JoinColumn(name = "user_no")
