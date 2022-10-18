@@ -1,8 +1,6 @@
 package com.example.fitsum.controller;
 
 import com.example.fitsum.Dto.BadgeDto;
-import com.example.fitsum.domain.Badge;
-import com.example.fitsum.exception.exceptions.CAuthenticationException;
 import com.example.fitsum.exception.exceptions.CWrongBoardIdException;
 import com.example.fitsum.model_response.CommonResult;
 import com.example.fitsum.model_response.SingleResult;
@@ -49,7 +47,6 @@ public class BadgeController {
     @PostMapping(value ="/profile/badgeregister")
     public CommonResult badgeregister(@RequestBody BadgeDto.CollectBadgeDto collectBadgeDto){
         log.info("badgetitle : {} " , collectBadgeDto.getBadgetitle());
-        log.info("opens : {}" , collectBadgeDto.getOpens());
         log.info("user : {}" , collectBadgeDto.getUser());
 
         badgeService.successBadge(collectBadgeDto);

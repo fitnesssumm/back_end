@@ -14,7 +14,7 @@ public class UserDto {
         private String nickName;
         private String userName;
         private String email;
-        private int userSex;
+        private Integer userSex;
         private Integer userCoin;
 
     }

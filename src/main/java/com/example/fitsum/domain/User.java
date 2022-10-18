@@ -56,7 +56,7 @@ public class User implements UserDetails {
     private String userName;
 
     @Schema(example = "유저 성별")
-    private int userSex;
+    private Integer userSex;
 
     @Schema(example = "유저 코인")
     private Integer userCoin;

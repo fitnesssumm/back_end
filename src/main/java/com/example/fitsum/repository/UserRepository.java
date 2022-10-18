@@ -17,4 +17,8 @@ public interface UserRepository extends JpaRepository<User, String> {
     public boolean existsByNickName(String nickName);
 
     public Optional<Void> deleteByUserId(String userId);
+
+    public Optional<User> findByUserSex(Integer userSex);
+
+    public Optional<User> findByUserCoin(Integer userCoin);
 }

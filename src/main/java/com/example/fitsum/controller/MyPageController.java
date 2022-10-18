@@ -32,4 +32,25 @@ public class MyPageController {
         return responseService.getSingleResult(user.getNickName());
     }
 
+    @GetMapping("/sex")
+    @Operation(summary = "성별 받아오기", description = "성별을 가져옴")
+    public SingleResult userSex(){
+        String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
+        return  responseService.getSingleResult(user.getUserSex());
+
+    }
+
+    @GetMapping("/coin")
+    @Operation(summary = "코인 받아오기", description = "코인을 가져옴")
+    public SingleResult userCoin(){
+        String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
+        return responseService.getSingleResult(user.getUserCoin());
+    }
+
+
+
+
+
 }
