@@ -28,12 +28,10 @@ public class Record {
     @Schema(example = "유저의 primary key")
     private Long recordId;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
     @Schema(example = "상체운동 기록")
     private Long pushuprecord;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
     @Schema(example = "하체운동 기록")
     private Long squartrecord;

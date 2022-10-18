@@ -29,6 +29,7 @@ public class SignUpService {
                 .userSex(signUpUserDto.getUserSex())
                 .emailAuth(true)
                 .roles(Collections.singletonList("ROLE_USER"))
+                .userCoin(0)
                 .build();
 
 

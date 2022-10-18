@@ -34,6 +34,7 @@ public class SignUpController {
         log.info("nickname : {} " , signUpUserDto.getNickName());
         log.info("password : {} " , signUpUserDto.getUserPw());
         log.info("userSex : {}", signUpUserDto.getUserSex());
+        log.info("userSex : {}", signUpUserDto.getUserCoin());
 
         //아이디, 닉네임, 이메일 중복 확인
         checkService.check(signUpUserDto);
