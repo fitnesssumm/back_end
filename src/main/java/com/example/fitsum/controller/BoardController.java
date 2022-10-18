@@ -62,6 +62,7 @@ public class BoardController {
     }
 
 //    @PutMapping("/board/{board-id}")
+    //    @PutMapping("/board/{board-id}")
 //    @Operation(summary = "일기 수정", description = "일기의 내용을 수정합니다. 제목 수정은 안됩니다.")
 //    public SingleResult updateDiary(@RequestBody DiaryDto.UpdateDiaryDto updateDiaryDto, @PathVariable("diary-id") String boardIds) {
 //        Long boardId;

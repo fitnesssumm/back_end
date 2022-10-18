@@ -12,7 +12,8 @@ public class BadgeDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class RepBoardDto {
+    public static class RepBadgeDto {
+
         private Long badgeId;
         private User user;
 
@@ -23,7 +24,7 @@ public class BadgeDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class BadgeViewDto{
+    public static class BadgeViewDto {
         private Long badgeId;
         private String badgetitle;
         private String userId;
@@ -32,14 +33,16 @@ public class BadgeDto {
         private Boolean isMe;
 
     }
+
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class CollectBadgeDto{
+    public static class CollectBadgeDto {
         private String badgetitle;
         private int Success;
 
     }
+
 
 }
