@@ -27,7 +27,7 @@ public class RecordController {
 
     final private ResponseService responseService;
 
-    @GetMapping("/exercise/{pushup}")
+    @GetMapping("/exercise/pushup")
     @Operation(summary = "팔굽 운동기록", description = "팔굽 운동 기록을 가져옴")
     public SingleResult showPushup(@PathVariable("pushup") String pushups) {
         Long pushup;
@@ -45,7 +45,7 @@ public class RecordController {
         return responseService.getSingleResult(recordDto);
     }
 
-    @GetMapping("/exercise/{squart}")
+    @GetMapping("/exercise/squart")
     @Operation(summary = "스쿼트 운동기록", description = "스쿼트 운동 기록을 가져옴")
     public SingleResult showSquart(@PathVariable("squart") String squarts) {
         Long squart;
