@@ -10,8 +10,8 @@ public class RecordDtoConverter {
                 .userId(record.getUser().getUserId())
                 .recordDate(record.getRecordDate())
                 .recordId(record.getRecordId())
-                .pushuprecord(record.getPushuprecord())
-                .squartrecord(record.getSquartrecord())
+                .pushup(record.getPushup())
+                .squart(record.getSquart())
                 .build();
     }
 
@@ -20,8 +20,8 @@ public class RecordDtoConverter {
                 .userId(record.getUser().getUserId())
                 .recordDate(record.getRecordDate())
                 .recordID(record.getRecordId())
-                .pushuprecord(record.getPushuprecord())
-                .squartrecord(record.getSquartrecord())
+                .pushup(record.getPushup())
+                .squart(record.getSquart())
                 .isMe(isMe)
                 .build();
     }

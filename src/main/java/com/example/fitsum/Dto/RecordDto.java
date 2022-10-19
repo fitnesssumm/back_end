@@ -18,8 +18,8 @@ public class RecordDto {
         private User user;
         private Long recordId;
         private LocalDate recordDate;
-        private Long pushuprecord;
-        private Long squartrecord;
+        private Long pushup;
+        private Long squart;
     }
 
     @Getter
@@ -29,8 +29,8 @@ public class RecordDto {
         private User user;
         private Long recordId;
         private LocalDate recordDate;
-        private Long pushuprecord;
-        private Long squartrecord;
+        private Long pushup;
+        private Long squart;
     }
 
     @Getter
@@ -40,8 +40,8 @@ public class RecordDto {
         private String userId;
         private Long recordId;
         private LocalDate recordDate;
-        private Long pushuprecord;
-        private Long squartrecord;
+        private Long pushup;
+        private Long squart;
 
         private String storedFilePath;
     }
@@ -54,8 +54,8 @@ public class RecordDto {
         private String userId;
         private Long recordID;
         private LocalDate recordDate;
-        private Long pushuprecord;
-        private Long squartrecord;
+        private Long pushup;
+        private Long squart;
 
         private Boolean isMe;
     }
@@ -65,7 +65,7 @@ public class RecordDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class SendRecordDto {
-        private Long pushuprecord;
-        private Long squartrecord;
+        private Long pushup;
+        private Long squart;
     }
 }

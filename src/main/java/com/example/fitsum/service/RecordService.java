@@ -22,11 +22,11 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @Service
 public class RecordService {
-    final private RecordRepository recordRepository;
+    private final RecordRepository recordRepository;
 
-    final private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    final private RecordDtoConverter recordDtoConverter;
+    private final RecordDtoConverter recordDtoConverter;
 
     private final UserBoardRepository userBoardRepository;
 
@@ -51,10 +51,28 @@ public class RecordService {
         Record record = recordRepository.save(
                 Record.builder()
                         .user(user)
-                        .pushuprecord(createRecordDto.getPushuprecord())
-                        .squartrecord(createRecordDto.getSquartrecord())
+                        .pushup(createRecordDto.getPushup())
+                        .squart(createRecordDto.getSquart())
                         .recordDate(LocalDate.now())
                         .build()
         );
+    }
+
+    @Transactional
+    public RecordDto.ShowRecordDto getPushup(Long pushup) {
+        //다이어리 엔티티 가져오기
+        Record record = recordRepository.findByPushup(pushup).orElseThrow(CBoardNotFoundException::new);
+
+        //checkUser에서 본인인지 아닌지를 판별합니다. 본인일 경우 편집 버튼을 활성화 해서 updateBoard로 이동이 가능해집니다.
+        return recordDtoConverter.toShowRecordDto(record, record.checkUser(true));
+    }
+
+    @Transactional
+    public RecordDto.ShowRecordDto getSquart(Long squart) {
+        //다이어리 엔티티 가져오기
+        Record record = recordRepository.findBySquart(squart).orElseThrow(CBoardNotFoundException::new);
+
+        //checkUser에서 본인인지 아닌지를 판별합니다. 본인일 경우 편집 버튼을 활성화 해서 updateBoard로 이동이 가능해집니다.
+        return recordDtoConverter.toShowRecordDto(record, record.checkUser(true));
     }
 }

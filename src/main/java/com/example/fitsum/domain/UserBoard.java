@@ -20,7 +20,7 @@ public class UserBoard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
     @Schema(example = "유저와 일기장의 다대 다 관계에 대한 primary key")
-    private Long userDiaryId;
+    private Long userBoardId;
 
     @ManyToOne
     @JoinColumn(name = "user_no")
