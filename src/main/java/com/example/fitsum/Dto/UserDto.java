@@ -16,6 +16,7 @@ public class UserDto {
         private String email;
         private Integer userSex;
         private Integer userCoin;
+        private Integer userItem;
 
     }
     @Getter
@@ -38,6 +39,14 @@ public class UserDto {
 
         private String curnickName;
         private String newnickName;
+
+    }
+
+    @Getter
+    public static class ChangeUserItemDto {
+
+        private Integer curUserItem;
+        private Integer newUserItem;
 
     }
 }

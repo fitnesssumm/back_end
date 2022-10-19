@@ -61,6 +61,9 @@ public class User implements UserDetails {
     @Schema(example = "유저 코인")
     private Integer userCoin;
 
+    @Schema(example = "유저 옷")
+    private Integer userItem;
+
 
 
     //userAuth??

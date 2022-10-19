@@ -4,6 +4,8 @@ import com.example.fitsum.Dto.UserDto;
 import com.example.fitsum.model_response.CommonResult;
 import com.example.fitsum.service.ResponseService;
 import com.example.fitsum.service.UpdateAccountsService;
+import com.example.fitsum.service.UpdateNicknameService;
+import com.example.fitsum.service.UpdateUserItemService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +23,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/accounts")
 public class UpdateAccountsController {
 
+    private final UpdateNicknameService updateNicknameService;
+
+    private final UpdateUserItemService updateUserItemService;
     private final UpdateAccountsService updateAccountsService;
     private final ResponseService responseService;
+
+    @ApiOperation(value = "유저 옷 변경", notes = "유저 옷 상태를 변경한다.")
+    @PutMapping(value = "/item")
+    public CommonResult updateUserItem(@RequestBody UserDto.ChangeUserItemDto changeUserItemDto) {
+        updateUserItemService.UpdateUserItemDto(changeUserItemDto.getCurUserItem(), changeUserItemDto.getNewUserItem());
+
+        return responseService.getSuccessResult();
+    }
 
     @ApiOperation(value = "비밀번호 변경", notes = "비밀번호를 변경한다.")
     @PutMapping(value = "/password")
@@ -31,5 +44,15 @@ public class UpdateAccountsController {
 
         return responseService.getSuccessResult();
     }
+
+    @ApiOperation(value = "닉네임 변경", notes = "닉네임를 변경한다.")
+    @PutMapping(value = "/nickname")
+    public CommonResult updateNickname(@RequestBody UserDto.ChangenickNameDto changenickNameDto) {
+        updateNicknameService.UpdateNicknameDto(changenickNameDto.getCurnickName(), changenickNameDto.getNewnickName());
+
+        return responseService.getSuccessResult();
+    }
+
+
 
 }

@@ -32,12 +32,12 @@ public class MyPageController {
         return responseService.getSingleResult(user.getNickName());
     }
 
-    @GetMapping("/sex")
-    @Operation(summary = "성별 받아오기", description = "성별을 가져옴")
-    public SingleResult userSex(){
+    @GetMapping("/item")
+    @Operation(summary = "옷 받아오기", description = "유저의 현재 옷 을 가져옴")
+    public SingleResult userItem(){
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
-        return  responseService.getSingleResult(user.getUserSex());
+        return  responseService.getSingleResult(user.getUserItem());
 
     }
 

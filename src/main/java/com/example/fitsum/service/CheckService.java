@@ -49,7 +49,7 @@ public class CheckService {
 
     @Transactional
     public void checkNickName(String nickName) {
-        //아이디가 존재하면 생성 불가
+        //닉네임이 존재하면 생성 불가
         if (userRepository.existsByNickName(nickName))
             throw new CNickNameAlreadyExistsException();
     }
