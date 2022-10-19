@@ -13,26 +13,10 @@ public class BoardDto {
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor
-    @Builder
-    public static class RepBoardDto {
-        private Long boardId;
-        private User user;
-
-        private String content;
-        private Boolean open;
-        private Integer likeNum;
-        private LocalDate writeDate;
-
-    }
-
-    @Getter
-    @AllArgsConstructor
-    @NoArgsConstructor
     public static class CreateBoardDto {
         private String title;
         private String content;
-
-        private String theme;
+        private LocalDate writeDate;
 
     }
 
@@ -47,25 +31,11 @@ public class BoardDto {
         private String nickName;
         private String content;
         private String title;
+        private String writeDate;
 
         private String storedFilePath;
     }
 
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    public static class BoardResultDto {
-        private Long boardId;
-
-        private String userId;
-
-        // private String title;
-        private String content;
-        private Boolean open;
-        private Integer likeNum;
-        private LocalDate writeDate;
-
-    }
 
     @Getter
     @Builder
@@ -85,19 +55,50 @@ public class BoardDto {
         private Integer likeNum;
     }
 
-    @Getter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class UpdateBoardDto {
-        private String content;
-    }
+//    @Getter
+//    @Builder
+//    @AllArgsConstructor
+//    public static class BoardResultDto {
+//        private Long boardId;
+//
+//        private String userId;
+//
+//        // private String title;
+//        private String content;
+//        private Boolean open;
+//        private Integer likeNum;
+//        private LocalDate writeDate;
+//
+//    }
 
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class SendContentDto {
-        private String content;
-    }
+//    @Getter
+//    @AllArgsConstructor
+//    @NoArgsConstructor
+//    public static class UpdateBoardDto {
+//        private String content;
+//    }
+
+//    @Getter
+//    @Builder
+//    @AllArgsConstructor
+//    @NoArgsConstructor
+//    public static class SendContentDto {
+//        private String content;
+//    }
+
+    //    @Getter
+//    @AllArgsConstructor
+//    @NoArgsConstructor
+//    @Builder
+//    public static class RepBoardDto {
+//        private Long boardId;
+//        private User user;
+//
+//        private String content;
+//        private Boolean open;
+//        private Integer likeNum;
+//        private LocalDate writeDate;
+//
+//    }
 
 }

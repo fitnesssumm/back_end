@@ -2,10 +2,7 @@ package com.example.fitsum.controller;
 
 import com.example.fitsum.Dto.UserDto;
 import com.example.fitsum.model_response.CommonResult;
-import com.example.fitsum.service.ResponseService;
-import com.example.fitsum.service.UpdateAccountsService;
-import com.example.fitsum.service.UpdateNicknameService;
-import com.example.fitsum.service.UpdateUserItemService;
+import com.example.fitsum.service.*;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UpdateAccountsController {
 
     private final UpdateNicknameService updateNicknameService;
-
+    private final UpdateUserCoinService updateUserCoinService;
     private final UpdateUserItemService updateUserItemService;
     private final UpdateAccountsService updateAccountsService;
     private final ResponseService responseService;
@@ -33,6 +30,14 @@ public class UpdateAccountsController {
     @PutMapping(value = "/item")
     public CommonResult updateUserItem(@RequestBody UserDto.ChangeUserItemDto changeUserItemDto) {
         updateUserItemService.UpdateUserItemDto(changeUserItemDto.getCurUserItem(), changeUserItemDto.getNewUserItem());
+
+        return responseService.getSuccessResult();
+    }
+
+    @ApiOperation(value = "유저 코인 갯수 변경", notes = "유저 코인 갯수를 변경한다.")
+    @PutMapping(value = "/coin")
+    public CommonResult updateUserCoin(@RequestBody UserDto.ChangeUserCoinDto changeUserCoinDto) {
+        updateUserCoinService.UpdateUserCoinDto(changeUserCoinDto.getCurUserCoin(), changeUserCoinDto.getNewUserCoin());
 
         return responseService.getSuccessResult();
     }
