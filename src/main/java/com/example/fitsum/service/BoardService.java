@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -49,6 +50,7 @@ public class BoardService {
                         .user(user)
                         .content(createBoardDto.getContent())
                         .title(createBoardDto.getTitle())
+                        .writeDate(LocalDate.now())
                         .build()
         );
 

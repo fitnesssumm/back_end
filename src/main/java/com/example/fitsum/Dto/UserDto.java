@@ -49,4 +49,12 @@ public class UserDto {
         private Integer newUserItem;
 
     }
+
+    @Getter
+    public static class ChangeUserCoinDto {
+
+        private Integer curUserCoin;
+        private Integer newUserCoin;
+
+    }
 }

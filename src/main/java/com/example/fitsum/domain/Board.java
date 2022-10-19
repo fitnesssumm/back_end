@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
@@ -33,6 +34,9 @@ public class Board {
     private String title;
     @Schema(example = "내용")
     private String content;
+
+    @Schema(example = "작성 일자")
+    private LocalDate writeDate;
 
     //일기의 주인
     @ManyToOne

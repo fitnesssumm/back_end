@@ -10,6 +10,7 @@ public class BoardDtoConverter {
                 .boardId(board.getBoardId())
                 .userId(board.getUser().getUserId())
                 .content(board.getContent())
+                .writeDate(board.getWriteDate())
                 .isMe(isMe)
                 .build();
     }
@@ -19,16 +20,10 @@ public class BoardDtoConverter {
                 .userId(board.getUser().getUserId())
                 .boardId(board.getBoardId())
                 .nickName(board.getUser().getNickName())
+                .writeDate(String.valueOf(board.getWriteDate()))
                 .title(board.getTitle())
                 .content(board.getContent())
                 .build();
     }
 
-    public static BoardDto.BoardResultDto toDiaryResultDto(Board board) {
-        return BoardDto.BoardResultDto.builder()
-                .boardId(board.getBoardId())
-                .userId(board.getUser().getUserId())
-                .content(board.getContent())
-                .build();
-    }
 }
