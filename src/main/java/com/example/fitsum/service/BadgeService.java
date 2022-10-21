@@ -1,6 +1,7 @@
 package com.example.fitsum.service;
 
 import com.example.fitsum.Dto.BadgeDto;
+import com.example.fitsum.domain.Badge;
 import com.example.fitsum.domain.User;
 import com.example.fitsum.exception.exceptions.CUserNotFoundException;
 import com.example.fitsum.repository.BadgeRepository;

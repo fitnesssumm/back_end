@@ -87,14 +87,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<UserBoard> storedDiaryList;
 
-    @OneToMany
-    @JoinTable(name = "UserBadge",
-            joinColumns = @JoinColumn(name = "userNo"),
-            inverseJoinColumns = @JoinColumn(name = "badgeId"))
-    private  List<Badge> badge = new ArrayList<Badge>();
-
-
-
+    @OneToMany(mappedBy = "user")
+    private List<UserBadge> userBadge;
 
 
     public void updatePassword(String userPw){
