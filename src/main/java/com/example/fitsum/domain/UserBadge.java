@@ -22,12 +22,12 @@ public class UserBadge {
     private Long userBadgeId;
 
     @ManyToOne
-    @JoinColumn(name = "userNo")
+    @JoinColumn(name = "user_no")
     @Schema(example = "유저 다대 일 관계")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "badgeId")
+    @JoinColumn(name = "badge_id")
     @Schema(example = "뱃지 다대 일 관계")
     private Badge badge;
 }

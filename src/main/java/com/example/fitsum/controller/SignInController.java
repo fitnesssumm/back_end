@@ -31,12 +31,18 @@ public class SignInController {
      @ApiOperation(value = "자동 로그인", notes = "자동 로그인을 한다.")
      @GetMapping(value = "/auto-login")
      public CommonResult autoLogin(HttpServletRequest request) {
+         //만약 액세스 토큰과 리프레시 토큰 모두 없다면
      if ((jwtTokenProvider.resolveAccessToken(request) == null)
      && (jwtTokenProvider.resolveRefreshToken(request) == null))
+         //유저가 없는 예외처리로 보냄
      throw new CUserNotFoundException();
+
+     //만약 리프레스토큰이 유효하지 않다면. -> 없다면 유저없는 예외처리
+     //처음은 둘다 없고 지금은 리프레시토큰만 없어도 예외처리로 보냄
      else if
      (!jwtTokenProvider.validateToken(jwtTokenProvider.resolveRefreshToken(request)))
      throw new CUserNotFoundException();
+     //이 외에는 성공적인 응답을 보냄.
      return responseService.getSuccessResult();
 
      }

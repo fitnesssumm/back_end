@@ -23,11 +23,11 @@ public class UpdateNicknameService {
 
     @Transactional
     public void UpdateNicknameDto(String curnickName, String newnickName){
-        log.info("여기인가");
+
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        log.info("id : {}" , userId);
-        log.info("nickname : {}" , curnickName);
+//        log.info("id : {}" , userId);
+//        log.info("nickname : {}" , curnickName);
 
         User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
 

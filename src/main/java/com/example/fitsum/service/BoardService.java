@@ -31,7 +31,7 @@ public class BoardService {
     private RestTemplate restTemplate;
     @Transactional
     public BoardDto.ShowBoardDto getBoardByboardId(Long boardId){
-        //다이어리 엔티티 가져오기
+        //게시판 엔티티 가져오기
         Board board = boardRepository.findByBoardId(boardId).orElseThrow(CBoardNotFoundException::new);
 
         //checkUser에서 본인인지 아닌지를 판별합니다. 본인일 경우 편집 버튼을 활성화 해서 updateBoard로 이동이 가능해집니다.
@@ -41,10 +41,10 @@ public class BoardService {
     @Transactional
     public void saveBoard(String userId, BoardDto.CreateBoardDto createBoardDto) {
 
-        //일기장 db에 저장할 유저를 가져옵니다.
+        //게시판 db에 저장할 유저를 가져옵니다.
         User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
 
-        //일기장에 저장합니다.
+        //게시판에 저장합니다.
         Board board = boardRepository.save(
                 Board.builder()
                         .user(user)

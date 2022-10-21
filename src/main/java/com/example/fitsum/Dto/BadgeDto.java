@@ -12,36 +12,14 @@ public class BadgeDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class RepBadgeDto {
-
-        private Long badgeId;
+    public static class CreateBadgeDto {
         private User user;
-
-        private String badgetitle;
-    }
-
-    @Getter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Builder
-    public static class BadgeViewDto {
-        private Long badgeId;
-        private String badgetitle;
-        private String userId;
-        private User user;
-        private Boolean opens;
-        private Boolean isMe;
-
-    }
-
-    @Getter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Builder
-    public static class CollectBadgeDto {
-        private String badgetitle;
-        private User user;
-        private Boolean opens;
+        private Boolean badge1;
+        private Boolean badge2;
+        private Boolean badge3;
+        private Boolean badge4;
+        private Boolean badge5;
+        private Boolean badge6;
 
     }
 

@@ -23,11 +23,11 @@ public class UpdateAccountsService {
 
     @Transactional
     public void UpdatePwDto(String curPw, String newPw){
-        log.info("여기인가");
+
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        log.info("id : {}" , userId);
-        log.info("password : {}" , curPw);
+//        log.info("id : {}" , userId);
+//        log.info("password : {}" , curPw);
 
         User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
 

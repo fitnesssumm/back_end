@@ -13,59 +13,22 @@ public class RecordDto {
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor
-    @Builder
-    public static class RepRecordDto {
+    public static class CreatePushupDto {
         private User user;
         private Long recordId;
         private LocalDate recordDate;
-        private Long pushup;
-        private Long squart;
+        private String pushup;
     }
 
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class CreateRecordDto {
+    public static class CreateSquartDto {
         private User user;
         private Long recordId;
         private LocalDate recordDate;
-        private Long pushup;
-        private Long squart;
+        private String squart;
     }
 
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    public static class RecordViewDto {
-        private String userId;
-        private Long recordId;
-        private LocalDate recordDate;
-        private Long pushup;
-        private Long squart;
 
-        private String storedFilePath;
-    }
-
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class ShowRecordDto {
-        private String userId;
-        private Long recordID;
-        private LocalDate recordDate;
-        private Long pushup;
-        private Long squart;
-
-        private Boolean isMe;
-    }
-
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class SendRecordDto {
-        private Long pushup;
-        private Long squart;
-    }
 }

@@ -23,14 +23,18 @@ public class UpdateUserItemService {
 
     @Transactional
     public void UpdateUserItemDto(Integer curUserItem, Integer newUserItem){
+        //controller 에서 넘어온 현재 아이템 값과 새로운 아이템 값을
 
+        //유저 아이디를 가져와서
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        log.info("id : {}" , userId);
-        log.info("useritem : {}" , curUserItem);
+        log.info("userId : {}" , userId);
+        log.info("curUserItem : {}" , curUserItem);
 
+        //db에서 유저를 찾아 user에 저장
         User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
 
+        //해당 유저의 아이템 값을 새로운 아이템 값으로 저장
         user.setUserItem(newUserItem);
 
 

@@ -31,6 +31,7 @@ public class LogInService {
         log.info("id : {}" , id);
         log.info("password : {}" , password);
 
+        //user에 DB에서 찾은 id에 맞는 유저 정보를 저장함
         User user = userRepository.findByUserId(id).orElseThrow(CUserNotFoundException::new);
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
@@ -38,10 +39,12 @@ public class LogInService {
             throw new CSigninFailedException();
         }
 
+        //메일이 없다면 메일 없는 예외처리
         if(user.getEmailAuth() == false){
             throw new CEmailAuthTokenNotFoundException();
         }
 
+        //액세스토큰과 리프레시 토큰 생성
         String accessToken = jwtTokenProvider.createAccessToken(user.getUserId(), user.getRoles());
         String refreshToken = jwtTokenProvider.createRefreshToken(user.getUserId(), user.getRoles());
 
