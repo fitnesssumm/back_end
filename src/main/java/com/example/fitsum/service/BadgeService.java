@@ -25,7 +25,7 @@ public class BadgeService {
 
 
     @Transactional
-    public void createbadge(String userId, BadgeDto.CreateBadgeDto createBadgeDto) {
+    public void createBadge(String userId, BadgeDto.CreateBadgeDto createBadgeDto) {
 
         //일기장 db에 저장할 유저를 가져옵니다.
         User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);

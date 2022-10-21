@@ -28,7 +28,9 @@ public class FindAccountsService {
         log.info("name : {}" , name);
         log.info("email : {}" , email);
 
+        //userRepository에 있는 findByUser ... 로 넘겨받은 이름과 이메일로 user를 찾아 넣음
         User user = userRepository.findByUserNameAndEmail(name, email).orElseThrow(CUserNotFoundException::new);
+        //헤당 유저의 아이디를 받아옴
         return user.getUserId();
     }
 

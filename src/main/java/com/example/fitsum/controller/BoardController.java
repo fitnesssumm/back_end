@@ -49,15 +49,17 @@ public class BoardController {
         String userId;
 
         try {
-            //권한을 통해 유저 id를 획득합니다.
+            //권한을 통해 유저 id를 획득합니다. -> userId에 넣음
             userId = SecurityContextHolder.getContext().getAuthentication().getName();
         } catch (NullPointerException e) {
             log.info("Not legal authentication.");
             throw new CAuthenticationException();
         }
 
+        //해당 userId와 createBoard를 서비스로 넘김.
         boardService.saveBoard(userId, createBoardDto);
 
+        //안드로이드에는 성공 응답을 보내줌.
         return responseService.getSuccessResult();
     }
 
