@@ -28,8 +28,17 @@ public class BadgeDto {
     @Builder
     public static class ViewBadge{
         private Long badgeId;
-        private User user;
         private Boolean badge1;
+        private Boolean badge2;
+        private Boolean badge3;
+        private Boolean badge4;
+        private Boolean badge5;
+        private Boolean badge6;
+
+
+
+
+
 
 
     }

@@ -8,8 +8,13 @@ public class BadgeDtoConverter {
     public static BadgeDto.ViewBadge toViewBadgeDto(Badge badge) {
         return BadgeDto.ViewBadge.builder()
                 .badgeId(badge.getBadgeId())
-                .user(badge.getUser())
                 .badge1(badge.getBadge1())
+                .badge2(badge.getBadge2())
+                .badge3(badge.getBadge3())
+                .badge4(badge.getBadge4())
+                .badge5(badge.getBadge5())
+                .badge6(badge.getBadge6())
+
                 .build();
     }
 }
