@@ -41,10 +41,10 @@ public class BoardService {
     @Transactional
     public void saveBoard(String userId, BoardDto.CreateBoardDto createBoardDto) {
 
-        //게시판 db에 저장할 유저를 가져옵니다.
+        //넘어온 userId로 유저정보를 user에 저장.
         User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
 
-        //게시판에 저장합니다.
+        //게시판에 저장
         Board board = boardRepository.save(
                 Board.builder()
                         .user(user)

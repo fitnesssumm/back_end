@@ -54,7 +54,7 @@ public class BadgeController {
             throw new CAuthenticationException();
         }
 
-        badgeService.createbadge(userId, createBadgeDto);
+        badgeService.createBadge(userId, createBadgeDto);
 
         return responseService.getSuccessResult();
     }
