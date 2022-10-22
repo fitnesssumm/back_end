@@ -24,6 +24,18 @@ public class MyPageController {
     private final ResponseService responseService;
     private final UserRepository userRepository;
 
+
+    @GetMapping("/mypage")
+    @Operation(summary = "닉네임 받아오기", description = "유저의 닉네임 가져옴")
+    public SingleResult userNickname(){
+        //스프링부트의 security를 사용하여 유저 정보를 가져옴. -> 그 정보를 토대로 DB에서 유저Id를 찾아와 user에 저장
+        String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
+
+        //해당 user의 코인을 SingleResult를 통하여 반환시켜줌.
+        return  responseService.getSingleResult(user.getNickName());
+    }
+
     @GetMapping("/item")
     @Operation(summary = "옷 받아오기", description = "유저의 현재 옷 을 가져옴")
     public SingleResult userItem(){
@@ -55,7 +67,7 @@ public class MyPageController {
 //
 //        //해당 user의 코인을 SingleResult를 통하여 반환시켜줌.
 //        return responseService.getSingleResult(user.getNickName());
-//    }
+//    }blb
 
 
 

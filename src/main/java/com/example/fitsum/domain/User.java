@@ -78,10 +78,17 @@ public class User implements UserDetails {
     @Schema(example = "이메일 인증이 되었는가")
     private Boolean emailAuth;
 
+
+
     //내가 쓴 일기 리스트
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Board> myBoardList;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Badge> badgeList;
+
 
     //좋아요한 일기 리스트
     @OneToMany(mappedBy = "user")

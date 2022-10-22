@@ -21,4 +21,5 @@ public interface UserRepository extends JpaRepository<User, String> {
     public Optional<User> findByUserSex(Integer userSex);
 
     public Optional<User> findByUserCoin(Integer userCoin);
+
 }

@@ -22,6 +22,17 @@ public class BadgeDto {
         private Boolean badge6;
 
     }
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class ViewBadge{
+        private Long badgeId;
+        private User user;
+        private Boolean badge1;
+
+
+    }
 
 
 }

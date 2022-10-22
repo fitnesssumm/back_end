@@ -1,17 +1,26 @@
 package com.example.fitsum.service;
 
 import com.example.fitsum.Dto.BadgeDto;
+import com.example.fitsum.Dto.BadgeDtoConverter;
+import com.example.fitsum.Dto.BoardDto;
 import com.example.fitsum.domain.Badge;
+import com.example.fitsum.domain.Board;
 import com.example.fitsum.domain.User;
+import com.example.fitsum.domain.UserBadge;
+import com.example.fitsum.exception.exceptions.CBoardNotFoundException;
 import com.example.fitsum.exception.exceptions.CUserNotFoundException;
 import com.example.fitsum.repository.BadgeRepository;
+import com.example.fitsum.repository.UserBadgeRepository;
 import com.example.fitsum.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -22,6 +31,10 @@ public class BadgeService {
     private final BadgeRepository badgeRepository;
 
     private final UserRepository userRepository;
+
+    private final UserBadgeRepository userBadgeRepository;
+
+    private final BadgeDtoConverter badgeDtoConverter;
 
 
     @Transactional
@@ -42,5 +55,21 @@ public class BadgeService {
                         .badge6(createBadgeDto.getBadge6())
                         .build()
         );
+    }
+    @Transactional
+    public List<BadgeDto.ViewBadge> getBadgeList(){
+
+        log.info("log for jpa badge paging");
+
+        List<Badge> badgeList = badgeRepository.findAll();
+
+        List<BadgeDto.ViewBadge> viewBadgeList = new ArrayList<>();
+
+        for (Badge badge : badgeList){
+            viewBadgeList.add(BadgeDtoConverter.toViewBadgeDto(badge));
+        }
+        return viewBadgeList;
+
+
     }
 }
