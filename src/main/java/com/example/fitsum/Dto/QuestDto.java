@@ -12,9 +12,7 @@ public class QuestDto {
     @NoArgsConstructor
     @Builder
     public static class ViewQuestDto{
-        private Long questId;
-        private String quest1;
-        private String quest2;
+        private String questtitle;
 
     }
 

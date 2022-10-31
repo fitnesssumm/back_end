@@ -30,22 +30,7 @@ public class Quest {
     @Schema(example = "유저의 primary key")
     private Long questId;
 
-    @Schema(example = "퀘스트1")
-    @ColumnDefault("false")
-    private String quest1;
-
-    @Schema(example = "퀘스트2")
-    @ColumnDefault("false")
-    private String quest2;
-
-    @Schema(example = "퀘스트3")
-    @ColumnDefault("false")
-    private String quest3;
-
-    @ManyToOne
-    @JoinColumn(name="userNo")
-    @Schema(example = "연결된 유저")
-    @JsonBackReference
-    private User user;
+    @Schema(example = "퀘스트제목")
+    private String questtitle;
 
 }

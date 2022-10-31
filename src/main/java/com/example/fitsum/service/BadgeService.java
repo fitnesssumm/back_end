@@ -32,9 +32,7 @@ public class BadgeService {
 
     private final UserRepository userRepository;
 
-    private final UserBadgeRepository userBadgeRepository;
 
-    private final BadgeDtoConverter badgeDtoConverter;
 
 
     @Transactional
