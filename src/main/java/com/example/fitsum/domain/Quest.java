@@ -1,5 +1,6 @@
 package com.example.fitsum.domain;
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -11,6 +12,7 @@ import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 
+
 @Slf4j
 @Entity
 @Setter
@@ -20,44 +22,30 @@ import javax.persistence.*;
 @Builder
 @DynamicInsert
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class Badge {
+public class Quest {
 
     @Id
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(example = "유저의 primary key")
-    private Long badgeId;
+    private Long questId;
 
-
-    @Schema(example = "뱃지1")
+    @Schema(example = "퀘스트1")
     @ColumnDefault("false")
-    private Boolean badge1;
+    private String quest1;
 
-    @Schema(example = "뱃지2")
+    @Schema(example = "퀘스트2")
     @ColumnDefault("false")
-    private Boolean badge2;
+    private String quest2;
 
-    @Schema(example = "뱃지3")
+    @Schema(example = "퀘스트3")
     @ColumnDefault("false")
-    private Boolean badge3;
-
-    @Schema(example = "뱃지4")
-    @ColumnDefault("false")
-    private Boolean badge4;
-
-    @Schema(example = "뱃지5")
-    @ColumnDefault("false")
-    private Boolean badge5;
-
-    @Schema(example = "뱃지6")
-    @ColumnDefault("false")
-    private Boolean badge6;
+    private String quest3;
 
     @ManyToOne
     @JoinColumn(name="userNo")
     @Schema(example = "연결된 유저")
     @JsonBackReference
     private User user;
-
 
 }
