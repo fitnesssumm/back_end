@@ -68,3 +68,4 @@ public class BadgeController {
         return responseService.getSingleResult(viewBadgeList);
     }
 }
+//test
