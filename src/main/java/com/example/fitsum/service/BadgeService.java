@@ -32,7 +32,7 @@ public class BadgeService {
 
     private final UserRepository userRepository;
 
-
+    private final UserBadgeRepository userBadgeRepository;
 
 
     @Transactional
@@ -54,20 +54,27 @@ public class BadgeService {
                         .build()
         );
     }
+
     @Transactional
-    public List<BadgeDto.ViewBadge> getBadgeList(){
+    public List<BadgeDto.ViewBadge> getMyBadgeListByUserId(String userId){
+        User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
 
-        log.info("log for jpa badge paging");
+        if(user.getBadgeList().size() == 0)
+            return null;
 
-        List<Badge> badgeList = badgeRepository.findAll();
+        log.info("log for jpa badge");
+        log.info(" " + user.getBadgeList().get(0).getBadgeId());
 
-        List<BadgeDto.ViewBadge> viewBadgeList = new ArrayList<>();
+        List<Badge> badgeList = badgeRepository.findByUser(user).orElseThrow();
 
-        for (Badge badge : badgeList){
-            viewBadgeList.add(BadgeDtoConverter.toViewBadgeDto(badge));
+        List<BadgeDto.ViewBadge> viewBadge = new ArrayList<>();
+
+        for (Badge badge : badgeList) {
+            viewBadge.add(BadgeDtoConverter.toViewBadgeDto(badge, userId));
         }
-        return viewBadgeList;
 
 
+
+        return viewBadge;
     }
 }

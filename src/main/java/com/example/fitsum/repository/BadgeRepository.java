@@ -13,6 +13,8 @@ public interface BadgeRepository extends JpaRepository<Badge, Long> {
 
     public Optional<Badge> findByBadge1(User user);
 
+    public Optional<List<Badge>> findByUser(User user);
+
 //    public Optional<List<Badge>> findAll();
 
 

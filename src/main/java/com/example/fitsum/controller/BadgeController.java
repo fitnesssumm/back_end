@@ -62,10 +62,11 @@ public class BadgeController {
     @GetMapping("/profile/badge")
     @Operation(summary = "뱃지1 받아오기", description = "뱃지1을 가져옴")
     public SingleResult badgeList() {
+        String userId = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        List<BadgeDto.ViewBadge> viewBadgeList = badgeService.getBadgeList();
+        // 사용자 인증 후 꺼내오기(pagable이 페이지 단위로 불러오기는 효과적)
+        List<BadgeDto.ViewBadge> badgeViewDtoList = badgeService.getMyBadgeListByUserId(userId);
 
-        return responseService.getSingleResult(viewBadgeList);
+        return responseService.getSingleResult(badgeViewDtoList);
     }
 }
-//test

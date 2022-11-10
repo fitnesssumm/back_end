@@ -34,6 +34,9 @@ public class BadgeDto {
         private Boolean badge4;
         private Boolean badge5;
         private Boolean badge6;
+        private String userId;
+        private String loginId;
+
 
 
 
