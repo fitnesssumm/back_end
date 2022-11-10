@@ -54,6 +54,7 @@ public class BadgeController {
             throw new CAuthenticationException();
         }
 
+        badgeService.checks(createBadgeDto);
         badgeService.createBadge(userId, createBadgeDto);
 
         return responseService.getSuccessResult();
@@ -64,9 +65,16 @@ public class BadgeController {
     public SingleResult badgeList() {
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        // 사용자 인증 후 꺼내오기(pagable이 페이지 단위로 불러오기는 효과적)
+
         List<BadgeDto.ViewBadge> badgeViewDtoList = badgeService.getMyBadgeListByUserId(userId);
 
         return responseService.getSingleResult(badgeViewDtoList);
+    }
+
+    @ApiOperation(value = "뱃지 중복체크")
+    @GetMapping(value = "/profile/checkbadge/{user}")
+    public CommonResult checkBadge(@PathVariable  User user){
+        badgeService.checkBadge(user);
+        return responseService.getSuccessResult();
     }
 }

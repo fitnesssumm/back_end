@@ -8,7 +8,8 @@ public class QuestDtoConverter {
 
     public static QuestDto.ViewQuestDto toViewQuestDto(Quest quest){
         return QuestDto.ViewQuestDto.builder()
-                .questtitle(quest.getQuesttitle())
+                .questTitle(quest.getQuestTitle())
+                .questSuccess(quest.getQuestSuccess())
                 .build();
     }
 }

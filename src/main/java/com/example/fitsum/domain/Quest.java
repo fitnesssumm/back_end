@@ -31,6 +31,15 @@ public class Quest {
     private Long questId;
 
     @Schema(example = "퀘스트제목")
-    private String questtitle;
+    private String questTitle;
 
+    @Schema(example = "성공여부")
+    @ColumnDefault("false")
+    private Boolean questSuccess;
+
+    @ManyToOne
+    @JoinColumn(name="userNo")
+    @Schema(example = "연결된 유저")
+    @JsonBackReference
+    private User user;
 }

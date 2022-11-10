@@ -88,6 +88,8 @@ public class ExceptionHandlers {
         return responseService.getFailResult(9, "user is already exist");
     }
 
+
+
     @ExceptionHandler(CUserIdAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.OK)
     protected CommonResult userIdAlreadyExistsException(HttpServletRequest request, CUserIdAlreadyExistsException e) {

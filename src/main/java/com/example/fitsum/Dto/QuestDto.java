@@ -12,7 +12,8 @@ public class QuestDto {
     @NoArgsConstructor
     @Builder
     public static class ViewQuestDto{
-        private String questtitle;
+        private String questTitle;
+        private Boolean questSuccess;
 
     }
 

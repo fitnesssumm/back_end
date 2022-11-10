@@ -94,8 +94,11 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<UserBoard> storedDiaryList;
 
+    //유저 마다 뱃지 리스트
     @OneToMany(mappedBy = "user")
     private List<UserBadge> userBadge;
+
+
 
 
     public void updatePassword(String userPw){

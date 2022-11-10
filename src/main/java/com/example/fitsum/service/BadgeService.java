@@ -7,6 +7,7 @@ import com.example.fitsum.domain.Badge;
 import com.example.fitsum.domain.Board;
 import com.example.fitsum.domain.User;
 import com.example.fitsum.domain.UserBadge;
+import com.example.fitsum.exception.exceptions.CBadgeAlreadyExistsException;
 import com.example.fitsum.exception.exceptions.CBoardNotFoundException;
 import com.example.fitsum.exception.exceptions.CUserNotFoundException;
 import com.example.fitsum.repository.BadgeRepository;
@@ -32,16 +33,15 @@ public class BadgeService {
 
     private final UserRepository userRepository;
 
-    private final UserBadgeRepository userBadgeRepository;
 
 
     @Transactional
-    public void createBadge(String userId, BadgeDto.CreateBadgeDto createBadgeDto) {
+    public void  createBadge(String userId, BadgeDto.CreateBadgeDto createBadgeDto) {
 
-        //일기장 db에 저장할 유저를 가져옵니다.
+        //뱃지 db에 저장할 유저를 가져옵니다.
         User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
 
-        //일기장에 저장합니다.
+        //뱃지에 저장합니다.
         Badge badge = badgeRepository.save(
                 Badge.builder()
                         .user(user)
@@ -55,6 +55,7 @@ public class BadgeService {
         );
     }
 
+    // 뱃지 리스트 받아오기
     @Transactional
     public List<BadgeDto.ViewBadge> getMyBadgeListByUserId(String userId){
         User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
@@ -73,8 +74,23 @@ public class BadgeService {
             viewBadge.add(BadgeDtoConverter.toViewBadgeDto(badge, userId));
         }
 
-
-
         return viewBadge;
     }
+
+
+
+    // 뱃지 생성 중복 체크
+
+    @Transactional
+    public void checks(BadgeDto.CreateBadgeDto createBadgeDto){
+        checkBadge(createBadgeDto.getUser());
+    }
+
+    @Transactional
+    public void checkBadge(User user){
+        if(badgeRepository.existsByUser(user))
+            throw new CBadgeAlreadyExistsException();
+
+    }
+
 }

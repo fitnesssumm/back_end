@@ -9,13 +9,10 @@ import java.util.Optional;
 
 public interface BadgeRepository extends JpaRepository<Badge, Long> {
 
-    public Optional<Badge> findByBadgeId(Long badgeId);
-
-    public Optional<Badge> findByBadge1(User user);
-
     public Optional<List<Badge>> findByUser(User user);
 
-//    public Optional<List<Badge>> findAll();
+    public boolean existsByUser(User user);
+
 
 
 
