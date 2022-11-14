@@ -54,7 +54,6 @@ public class BadgeController {
             throw new CAuthenticationException();
         }
 
-        badgeService.checks(createBadgeDto);
         badgeService.createBadge(userId, createBadgeDto);
 
         return responseService.getSuccessResult();
@@ -72,8 +71,11 @@ public class BadgeController {
     }
 
     @ApiOperation(value = "뱃지 중복체크")
-    @GetMapping(value = "/profile/checkbadge/{user}")
-    public CommonResult checkBadge(@PathVariable  User user){
+    @GetMapping(value = "/profile/checkbadge")
+    public CommonResult checkBadge(){
+        String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
+
         badgeService.checkBadge(user);
         return responseService.getSuccessResult();
     }

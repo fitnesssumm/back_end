@@ -144,4 +144,12 @@ public class ExceptionHandlers {
         // CommonResult : 응답 결과에 대한 정보
         return responseService.getFailResult(17, "current password is wrong");
     }
+
+    @ExceptionHandler(CBadgeAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.OK)
+    protected CommonResult badgeAlreadyExistsException(HttpServletRequest request, CBadgeAlreadyExistsException e) {
+        // CommonResult : 응답 결과에 대한 정보
+        return responseService.getFailResult(18, "badge is already exist");
+    }
+
 }

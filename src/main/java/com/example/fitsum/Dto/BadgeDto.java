@@ -14,6 +14,7 @@ public class BadgeDto {
     @Builder
     public static class CreateBadgeDto {
         private User user;
+        private Long userNo;
         private Boolean badge1;
         private Boolean badge2;
         private Boolean badge3;

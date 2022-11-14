@@ -37,9 +37,5 @@ public class Quest {
     @ColumnDefault("false")
     private Boolean questSuccess;
 
-    @ManyToOne
-    @JoinColumn(name="userNo")
-    @Schema(example = "연결된 유저")
-    @JsonBackReference
-    private User user;
+
 }
