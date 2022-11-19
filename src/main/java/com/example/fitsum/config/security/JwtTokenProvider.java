@@ -2,7 +2,7 @@ package com.example.fitsum.config.security;
 
 
 import com.example.fitsum.exception.exceptions.CUserNotFoundException;
-import com.example.fitsum.repository.UserRepository;
+import com.example.fitsum.model_response.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;

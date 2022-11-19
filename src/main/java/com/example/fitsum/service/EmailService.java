@@ -1,7 +1,7 @@
 package com.example.fitsum.service;
 
 import com.example.fitsum.domain.ConfirmationToken;
-import com.example.fitsum.repository.ConfirmationTokenRepository;
+import com.example.fitsum.model_response.repository.ConfirmationTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;

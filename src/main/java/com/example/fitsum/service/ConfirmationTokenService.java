@@ -3,7 +3,7 @@ package com.example.fitsum.service;
 
 import com.example.fitsum.domain.ConfirmationToken;
 import com.example.fitsum.exception.exceptions.CEmailAuthTokenNotFoundException;
-import com.example.fitsum.repository.ConfirmationTokenRepository;
+import com.example.fitsum.model_response.repository.ConfirmationTokenRepository;
 import io.jsonwebtoken.lang.Assert;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

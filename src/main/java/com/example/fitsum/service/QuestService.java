@@ -4,7 +4,7 @@ package com.example.fitsum.service;
 import com.example.fitsum.Dto.QuestDto;
 import com.example.fitsum.Dto.QuestDtoConverter;
 import com.example.fitsum.domain.Quest;
-import com.example.fitsum.repository.QuestRepository;
+import com.example.fitsum.model_response.repository.QuestRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

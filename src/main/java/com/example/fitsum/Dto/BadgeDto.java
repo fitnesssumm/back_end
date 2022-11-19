@@ -14,7 +14,6 @@ public class BadgeDto {
     @Builder
     public static class CreateBadgeDto {
         private User user;
-        private Long userNo;
         private Boolean badge1;
         private Boolean badge2;
         private Boolean badge3;
@@ -23,11 +22,12 @@ public class BadgeDto {
         private Boolean badge6;
 
     }
+
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class ViewBadge{
+    public static class ViewBadge {
         private Long badgeId;
         private Boolean badge1;
         private Boolean badge2;
@@ -38,14 +38,12 @@ public class BadgeDto {
         private String userId;
         private String loginId;
 
-
-
-
-
-
-
-
+    }
+    @Getter
+    public static class ChangeBadge2 {
+        private Boolean curBadge2;
+        private Boolean newBadge2;
     }
 
-
 }
+

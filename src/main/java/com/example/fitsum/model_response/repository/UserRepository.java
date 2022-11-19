@@ -1,4 +1,4 @@
-package com.example.fitsum.repository;
+package com.example.fitsum.model_response.repository;
 
 import com.example.fitsum.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;

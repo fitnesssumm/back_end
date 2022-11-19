@@ -4,7 +4,7 @@ import com.example.fitsum.Dto.UserDto;
 import com.example.fitsum.exception.exceptions.CNickNameAlreadyExistsException;
 import com.example.fitsum.exception.exceptions.CUserAlreadyExistsException;
 import com.example.fitsum.exception.exceptions.CUserIdAlreadyExistsException;
-import com.example.fitsum.repository.UserRepository;
+import com.example.fitsum.model_response.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,15 +1,9 @@
 package com.example.fitsum.controller;
 
-import com.example.fitsum.Dto.BoardDto;
-import com.example.fitsum.Dto.RecordDto;
-import com.example.fitsum.domain.Record;
 import com.example.fitsum.domain.User;
-import com.example.fitsum.exception.exceptions.CAuthenticationException;
 import com.example.fitsum.exception.exceptions.CUserNotFoundException;
-import com.example.fitsum.exception.exceptions.CWrongBoardIdException;
-import com.example.fitsum.model_response.CommonResult;
 import com.example.fitsum.model_response.SingleResult;
-import com.example.fitsum.repository.UserRepository;
+import com.example.fitsum.model_response.repository.UserRepository;
 import com.example.fitsum.service.RecordService;
 import com.example.fitsum.service.ResponseService;
 import io.swagger.v3.oas.annotations.Operation;

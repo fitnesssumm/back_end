@@ -2,20 +2,14 @@ package com.example.fitsum.service;
 
 import com.example.fitsum.Dto.BadgeDto;
 import com.example.fitsum.Dto.BadgeDtoConverter;
-import com.example.fitsum.Dto.BoardDto;
 import com.example.fitsum.domain.Badge;
-import com.example.fitsum.domain.Board;
 import com.example.fitsum.domain.User;
-import com.example.fitsum.domain.UserBadge;
 import com.example.fitsum.exception.exceptions.CBadgeAlreadyExistsException;
-import com.example.fitsum.exception.exceptions.CBoardNotFoundException;
 import com.example.fitsum.exception.exceptions.CUserNotFoundException;
-import com.example.fitsum.repository.BadgeRepository;
-import com.example.fitsum.repository.UserBadgeRepository;
-import com.example.fitsum.repository.UserRepository;
+import com.example.fitsum.model_response.repository.BadgeRepository;
+import com.example.fitsum.model_response.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -78,14 +72,12 @@ public class BadgeService {
     }
 
 
+//    @Transactional
+//    public void checks(BadgeDto.CreateBadgeDto createBadgeDto){
+//        checkBadge(createBadgeDto.getUser());
+//    }
 
     // 뱃지 생성 중복 체크
-
-    @Transactional
-    public void checks(BadgeDto.CreateBadgeDto createBadgeDto){
-        checkBadge(createBadgeDto.getUser());
-    }
-
     @Transactional
     public void checkBadge(User user){
         if(badgeRepository.existsByUser(user))

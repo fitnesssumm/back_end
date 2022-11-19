@@ -1,16 +1,13 @@
 package com.example.fitsum.controller;
 
 import com.example.fitsum.Dto.BadgeDto;
-import com.example.fitsum.Dto.BoardDto;
-import com.example.fitsum.domain.Badge;
 import com.example.fitsum.domain.User;
 import com.example.fitsum.exception.exceptions.CAuthenticationException;
 import com.example.fitsum.exception.exceptions.CUserNotFoundException;
-import com.example.fitsum.exception.exceptions.CWrongBoardIdException;
 import com.example.fitsum.model_response.CommonResult;
 import com.example.fitsum.model_response.SingleResult;
-import com.example.fitsum.repository.BadgeRepository;
-import com.example.fitsum.repository.UserRepository;
+import com.example.fitsum.model_response.repository.BadgeRepository;
+import com.example.fitsum.model_response.repository.UserRepository;
 import com.example.fitsum.service.BadgeService;
 import com.example.fitsum.service.ResponseService;
 import io.swagger.annotations.ApiOperation;
@@ -18,8 +15,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,7 +55,7 @@ public class BadgeController {
     }
 
     @GetMapping("/profile/badge")
-    @Operation(summary = "뱃지1 받아오기", description = "뱃지1을 가져옴")
+    @Operation(summary = "뱃지 받아오기", description = "뱃지1을 가져옴")
     public SingleResult badgeList() {
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
 

@@ -3,7 +3,7 @@ package com.example.fitsum.service;
 
 import com.example.fitsum.domain.User;
 import com.example.fitsum.exception.exceptions.CUserNotFoundException;
-import com.example.fitsum.repository.UserRepository;
+import com.example.fitsum.model_response.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;

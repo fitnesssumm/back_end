@@ -1,4 +1,4 @@
-package com.example.fitsum.repository;
+package com.example.fitsum.model_response.repository;
 
 import com.example.fitsum.domain.Badge;
 import com.example.fitsum.domain.User;
@@ -13,6 +13,7 @@ public interface BadgeRepository extends JpaRepository<Badge, Long> {
 
     public boolean existsByUser(User user);
 
+    public Optional<Badge> findByBadge2(Boolean badge2);
 
 
 

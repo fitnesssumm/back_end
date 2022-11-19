@@ -3,7 +3,7 @@ package com.example.fitsum.service;
 
 import com.example.fitsum.Dto.UserDto;
 import com.example.fitsum.domain.User;
-import com.example.fitsum.repository.UserRepository;
+import com.example.fitsum.model_response.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
