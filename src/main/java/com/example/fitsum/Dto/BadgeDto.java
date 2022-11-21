@@ -39,6 +39,12 @@ public class BadgeDto {
         private String loginId;
 
     }
+
+    @Getter
+    public static class ChangeBadge2 {
+        private Boolean curBadge2;
+        private Boolean newBadge2;
+    }
     @Getter
     public static class ChangeBadge3 {
         private Boolean curBadge3;

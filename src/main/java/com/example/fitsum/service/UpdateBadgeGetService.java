@@ -27,6 +27,22 @@ public class UpdateBadgeGetService {
 
 
     @Transactional
+    public List<BadgeDto.ViewBadge> UpdateBadge2(Boolean curBadge2, Boolean newBadge2){
+
+        String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUserId(userId).orElseThrow(CUserNotFoundException::new);
+        List<Badge> badgeList = badgeRepository.findByUser(user).orElseThrow();
+        List<BadgeDto.ViewBadge> viewBadge = new ArrayList<>();
+        for (Badge badge : badgeList) {
+            viewBadge.add(BadgeDtoConverter.toViewBadgeDto(badge, userId));
+            badge.setBadge2(newBadge2);
+
+        }
+        return viewBadge;
+    }
+
+
+    @Transactional
     public List<BadgeDto.ViewBadge> UpdateBadge3(Boolean curBadge3, Boolean newBadge3){
 
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -35,7 +51,7 @@ public class UpdateBadgeGetService {
         List<BadgeDto.ViewBadge> viewBadge = new ArrayList<>();
         for (Badge badge : badgeList) {
             viewBadge.add(BadgeDtoConverter.toViewBadgeDto(badge, userId));
-            badge.setBadge2(newBadge3);
+            badge.setBadge3(newBadge3);
 
         }
         return viewBadge;
