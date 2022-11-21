@@ -40,9 +40,9 @@ public class BadgeDto {
 
     }
     @Getter
-    public static class ChangeBadge2 {
-        private Boolean curBadge2;
-        private Boolean newBadge2;
+    public static class ChangeBadge3 {
+        private Boolean curBadge3;
+        private Boolean newBadge3;
     }
 
 }

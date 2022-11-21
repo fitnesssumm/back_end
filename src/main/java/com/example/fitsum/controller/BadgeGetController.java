@@ -22,10 +22,10 @@ public class BadgeGetController {
 
     private final ResponseService responseService;
 
-    @ApiOperation(value = "뱃지2번 변경", notes = "뱃지2번 성공여부를 변경한다.")
-    @PutMapping(value = "/profile/badge2")
-    public CommonResult updateBadge2(@RequestBody BadgeDto.ChangeBadge2 changeBadge2) {
-        updateBadgeGetService.UpdateBadge2(changeBadge2.getCurBadge2(), changeBadge2.getNewBadge2() );
+    @ApiOperation(value = "뱃지3번 변경", notes = "뱃지2번 성공여부를 변경한다.")
+    @PutMapping(value = "/profile/badge3")
+    public CommonResult updateBadge2(@RequestBody BadgeDto.ChangeBadge3 changeBadge3) {
+        updateBadgeGetService.UpdateBadge3(changeBadge3.getCurBadge3(), changeBadge3.getNewBadge3() );
         return responseService.getSuccessResult();
 
     }
