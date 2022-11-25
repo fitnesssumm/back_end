@@ -55,7 +55,7 @@ public class BadgeController {
     }
 
     @GetMapping("/profile/badge")
-    @Operation(summary = "뱃지 받아오기", description = "뱃지1을 가져옴")
+    @Operation(summary = "뱃지 받아오기", description = "뱃지을 가져옴")
     public SingleResult badgeList() {
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
 

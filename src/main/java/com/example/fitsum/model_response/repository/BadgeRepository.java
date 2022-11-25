@@ -13,7 +13,6 @@ public interface BadgeRepository extends JpaRepository<Badge, Long> {
 
     public boolean existsByUser(User user);
 
-    public Optional<Badge> findByBadge3(Boolean badge3);
 
 
 

@@ -28,11 +28,11 @@ public class Record {
     @Schema(example = "유저의 primary key")
     private Long recordId;
 
-    @Column(unique = true)
+    @Column
     @Schema(example = "상체운동 기록")
     private String pushup;
 
-    @Column(unique = true)
+    @Column
     @Schema(example = "하체운동 기록")
     private String squart;
 
@@ -45,21 +45,6 @@ public class Record {
     @Schema(example = "기록 일자")
     private LocalDate recordDate;
 
-    public boolean checkUser(boolean isMe){
-        String userId;
-        //권한을 통해 유저 id를 획득합니다.
-        try {
-            //권한을 통해 유저 id를 획득합니다.
-            userId = SecurityContextHolder.getContext().getAuthentication().getName();
-        }catch(NullPointerException e){
-            log.info("정상적으로 로그인 되지 않았습니다.");
-            throw new CAuthenticationException();
-        }
-        if(!this.getUser().getUserId().equals(userId)) {
-            log.info("로그인한 유저와 일기의 유저가 다릅니다.");
-            isMe = false;
-        }
-        return isMe;
-    }
+
 
 }
